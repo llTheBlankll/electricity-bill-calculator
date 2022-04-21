@@ -1,0 +1,82 @@
+<div class="container w-25">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3>Electricity Calculator</h3>
+          </div>
+          <div class="card-body">
+            <form (ngSubmit)="calculateElectricity()" [formGroup]="inputGroup">
+              <div class="mb-2">
+                <label>Power Consumption:</label>
+                <input formControlName="powerConsumption" type="number" min="0" name="powerConsumption" id="power_consumption" class="form-control">
+              </div>
+              
+              <div class="mb-2">
+                <label>Hours of use per day:</label>
+                <div class="row">
+                  <div class="col-8">
+                    <input type="number" formControlName="hoursOfUse" min="0" name="hoursOfUse" id="power_consumption" class="form-control">
+                  </div>
+                  <div class="col-4">
+                    <select name="calculateBy" formControlName="calculateBy" class="form-select">
+                      <option value="Watts" selected>Watts</option>
+                      <option value="Kilowatts">Kilowatts</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="mb-2">
+                <label>1 kilwatt-hour cost (kWh) cost: </label>
+                <div class="row">
+                  <div class="col-6">
+                    <input type="number" formControlName="kiloWattCost" min="0" name="kilowattCost" id="power_consumption" class="form-control">
+                  </div>
+                  <div class="col-6">
+                    <select class="form-select" formControlName="currency" selecte (change)="setCurrency($event)">
+                      <option value="PHP" selected>Philippines</option>
+                      <option value="USD">United States</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="mb-2 text-center">
+                <div class="btn-group w-50">
+                  <button class="form-control btn btn-primary" [disabled]="!this.inputGroup.valid" type="submit">Calculate</button>
+                  <button class="form-control btn btn-danger" type="button" (click)="reset()">Reset</button>
+                </div>
+              </div>
+            </form>
+            <h3 class="bd-title">Results:</h3>
+            <div class="card">
+              <div class="card-body">
+                <div class="mb-2">
+                  <label>Electricity cost per day</label>
+                  <div class="input-group">
+                    <span class="input-group-text">{{ currency_symbol }}</span>
+                    <input type="text" [(ngModel)]="costPerDay" class="form-control" disabled>
+                  </div>
+                </div>
+                <div class="mb-2">
+                  <label>Electricity cost per month</label>
+                  <div class="input-group">
+                    <span class="input-group-text">{{ currency_symbol }}</span>
+                    <input type="text" [(ngModel)]="costPerMonth" class="form-control" disabled>
+                  </div>
+                </div>
+                <div class="mb-2">
+                  <label>Electricity cost per </label>
+                  <div class="input-group">
+                    <span class="input-group-text">{{ currency_symbol }}</span>
+                    <input type="text" [(ngModel)]="costperYear" class="form-control" disabled>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

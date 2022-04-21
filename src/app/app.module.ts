@@ -4,10 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CalculatorComponent } from './calculator/calculator.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CalculatorComponent
   ],
   imports: [
     BrowserModule,
